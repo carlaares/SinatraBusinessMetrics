@@ -10,6 +10,7 @@ configure do
   conn = MongoClient.new("192.168.0.11")
   set :mongo_connection, conn
   set :mongo_db, conn.db('business-metrics')
+  set :logging, :true
 end
 
 
@@ -22,3 +23,8 @@ get '/resources' do
   erb :resources
 end
 
+post '/resources' do
+  p = { name: params[:name] }
+  new_id = settings.mongo_db['resources'].insert p
+  redirect to('/resources')
+end
