@@ -1,5 +1,3 @@
-require 'rubygems'
-require 'bundler'  
-Bundler.require  
-require './business_metrics'
-run Sinatra::Application
+require File.join(File.dirname(__FILE__), 'app.rb')
+run BusinessMetrics.new
+

@@ -1,5 +1,18 @@
-source 'https://rubygems.org'
-gem 'sinatra', :github => "sinatra/sinatra"
+source "http://rubygems.org"
+gem "sinatra"
+gem "thin"
+
+group :development do
+  gem "awesome_print"
+  gem "shotgun"
+  gem "yard"
+  gem "rdiscount"
+end
+
+# group :test do
+#   gem "rack-test"
+#   gem "capybara-webkit"
+# end
 
 # other dependencies
 gem 'sinatra-contrib' 
