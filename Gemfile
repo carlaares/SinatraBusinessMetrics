@@ -19,3 +19,7 @@ gem 'sinatra-contrib'
 
 gem 'mongo'
 gem 'bson_ext'
+
+gem "statsd-instrument"
+
+gem 'whenever', :require => false
