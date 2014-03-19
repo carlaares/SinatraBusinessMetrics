@@ -42,14 +42,6 @@ Folders Structure
 Setup
 -----
 
-Install Ruby 1.9.3 (if necessary). RVM is optional, but highly recommended
-
-    rvm install ruby-1.9.3-p125
-    git clone https://github.com/oren/sinatra-template.git
-    cd sinatra-template (it will create sinatra-template gemset)
-
-[Install QT](https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit) (needed for capybara-webkit)
-
 Install bundler
 
     gem install bundler
@@ -75,3 +67,33 @@ Run the server
 Go to [http://127.0.0.1:9393](http://127.0.0.1:9393)
 
 
+Pre-requisites
+--------------
+
+Install statsd
+
+    https://github.com/etsy/statsd
+
+
+Start statsd
+    nohup node statsd/stats.js /home/carla/businessMetrics/mongoStatsdConfig.js &
+
+
+
+
+https://github.com/Shopify/statsd-instrument
+
+
+
+<script type="text/javascript">
+  var _paq = _paq || [];
+  (function(){ 
+    var u="http://127.0.0.1:9393/"; 
+    _paq.push(['setSiteId', DATABASE_NAME]);
+    _paq.push(['trackPageView']);
+    _paq.push(['setTrackerUrl', '/_stats']);
+    _paq.push(['enableLinkTracking']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'javascript/bm_analytics.js';
+    s.parentNode.insertBefore(g,s); 
+  })();
+</script>

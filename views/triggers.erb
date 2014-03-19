@@ -1,0 +1,72 @@
+<h1>List of triggers</h1>
+<table class="table table-bordered">
+  <tr>
+    <th>Name</th>
+    <th>Every</th>
+    <th>Warning</th>
+    <th>Error</th>
+    <th>Resource</th>
+    <th></th>
+  </tr>
+  <% @triggers.each do |trigger| %>
+    <tr>
+      <td><%= trigger['name'] %></td>
+      <td><%= trigger['execute_every'] %></td>
+      <td><%= trigger['trigger_if'] == 'more' ? ' > ' : ' < ' %><%= trigger['threshold_warning'] %></td>
+      <td><%= trigger['trigger_if'] == 'more' ? ' > ' : ' < ' %><%= trigger['threshold_error'] %></td>
+      <td><%= trigger['resource'] %></td>
+      <td>
+        <%= delete_form trigger %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<script>
+  $(function(){
+    $('.threshold_text').text(' stat > ');
+    $('#trigger_if').change(function(){
+      if($(this).val() == 'more') {
+        $('.threshold_text').text(' stat > ');
+      } else {
+        $('.threshold_text').text(' stat < ');
+      }
+    });
+  });
+</script>
+
+<form role="form" method="post">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" name="name" placeholder="Enter trigger name">
+  </div>
+  <div class="form-group">
+    <label>Execute every</label>
+    <select class="form-control" name="execute_every">
+      <option value="hour">Hour</option>
+      <option value="day">Day</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Trigger if</label>
+    <select class="form-control" id="trigger_if" name="trigger_if">
+      <option value="more">More than</option>
+      <option value="less">Less than</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Threshold that raises WARNING</label>
+    <div class="input-group">
+      <span class="input-group-addon threshold_text"></span>
+      <input type="text" class="form-control" name="threshold_warning" placeholder="Enter a value">
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Threshold that raises ERROR</label>
+    <div class="input-group">
+      <span class="input-group-addon threshold_text"></span>
+      <input type="text" class="form-control" name="threshold_error" placeholder="Enter a value">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-default">Save</button>
+</form>

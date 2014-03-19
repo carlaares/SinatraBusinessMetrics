@@ -46,8 +46,8 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="/resources">Resources</a></li>
-                  <li><a href="/threasholds">Threasholds</a></li>
+                  <li><a class="menu" href="/resources">Resources</a></li>
+                  <li><a class="menu" href="/triggers">Triggers</a></li>
                   <li><a href="#">My account</a></li>
                   <li class="divider"></li>
                   <li class="dropdown-header">Nav header</li>
@@ -71,6 +71,20 @@
     <script src="/javascript/d3/d3.min.js" charset="utf-8"></script>
     <script src="/javascript/d3/d3.layout.min.js" charset="utf-8"></script>
     <script src="/javascript/rickshaw.min.js"></script>
+
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      (function(){ 
+        var u="http://127.0.0.1:9393/";
+        _paq.push(['setSiteId', 'business_metrics']);
+        _paq.push(['trackPageView']);
+        _paq.push(['setTrackerUrl', '/_stats']);
+        _paq.push(['enableLinkTracking']);
+        _paq.push(['setLinkClasses', ""]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'javascript/bm_analytics.js';
+        s.parentNode.insertBefore(g,s); 
+      })();
+    </script>
 
   </body>
 </html>
